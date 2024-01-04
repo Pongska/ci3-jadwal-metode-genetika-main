@@ -82,29 +82,29 @@ class Admin_models extends CI_Model
     }
 
     function ambilDataJadwal(){
-        $res = $this->db->query("SELECT a.id as id, e.nama as hari, Concat_WS('-', MID(g.range_jam,1,5), (SELECT MID(range_jam,7,5) FROM tbl_jam WHERE id = (SELECT jm.id FROM tbl_jam jm WHERE MID(jm.range_jam,1,5) = MID(g.range_jam,1,5)) + (c.sks - 1))) as jam_kuliah, c.nama as nama_mk, c.sks as sks, c.semester as semester, a.kelas as kelas, concat(d.nama,', ',d.title) as dosen, f.nama as ruang, h.nama as programstudi, i.tahun_angkatan as tahun_angkatan FROM tbl_jadwalkuliah a LEFT JOIN tbl_pengampu b ON a.id_pengampu = b.id LEFT JOIN tbl_matakuliah c ON b.id_mk = c.id LEFT JOIN tbl_dosen d ON b.id_dosen = d.id LEFT JOIN tbl_hari e ON a.id_hari = e.id LEFT JOIN tbl_ruang f ON a.id_ruang = f.id LEFT JOIN tbl_jam g ON a.id_jam = g.id LEFT JOIN tbl_prodi h ON c.id_prodi = h.id LEFT JOIN tbl_kelas i ON JSON_UNQUOTE(JSON_EXTRACT(b.kelas,'$[0][0]')) = i.id order by e.id asc,Jam_Kuliah asc;")->result_array();
+        $res = $this->db->query("SELECT a.id as id, e.nama as hari, Concat_WS('-', MID(g.range_jam,1,5), (SELECT MID(range_jam,7,5) FROM tbl_jam WHERE id = (SELECT jm.id FROM tbl_jam jm WHERE MID(jm.range_jam,1,5) = MID(g.range_jam,1,5)) + (c.sks - 1))) as jam_kuliah, c.nama as nama_mk, c.sks as sks, c.semester as semester, a.kelas as kelas, concat(d.nama,', ',d.title) as dosen, f.nama as ruang, h.nama as programstudi, i.tahun_angkatan as tahun_angkatan FROM tbl_jadwalkuliah a LEFT JOIN tbl_pengampu b ON a.id_pengampu = b.id LEFT JOIN tbl_lapangan c ON b.id_mk = c.id LEFT JOIN tbl_dosen d ON b.id_dosen = d.id LEFT JOIN tbl_hari e ON a.id_hari = e.id LEFT JOIN tbl_ruang f ON a.id_ruang = f.id LEFT JOIN tbl_jam g ON a.id_jam = g.id LEFT JOIN tbl_prodi h ON c.id_prodi = h.id LEFT JOIN tbl_kelas i ON JSON_UNQUOTE(JSON_EXTRACT(b.kelas,'$[0][0]')) = i.id order by e.id asc,Jam_Kuliah asc;")->result_array();
 
         return $res;
     }
 
     function ambilDataJadwal_where($id){
-        $res = $this->db->query("SELECT a.id as id, a.id_hari as id_hari, a.id_jam as id_jam, b.id_dosen as id_dosen, e.nama as hari, Concat_WS('-', MID(g.range_jam,1,5), (SELECT MID(range_jam,7,5) FROM tbl_jam WHERE id = (SELECT jm.id FROM tbl_jam jm WHERE MID(jm.range_jam,1,5) = MID(g.range_jam,1,5)) + (c.sks - 1))) as jam_kuliah, c.nama as nama_mk, c.sks as sks, c.semester as semester, a.kelas as kelas, concat(d.nama,', ',d.title) as dosen, f.nama as ruang, h.nama as programstudi, i.tahun_angkatan as tahun_angkatan, e.kelas as jenis FROM tbl_jadwalkuliah a LEFT JOIN tbl_pengampu b ON a.id_pengampu = b.id LEFT JOIN tbl_matakuliah c ON b.id_mk = c.id LEFT JOIN tbl_dosen d ON b.id_dosen = d.id LEFT JOIN tbl_hari e ON a.id_hari = e.id LEFT JOIN tbl_ruang f ON a.id_ruang = f.id LEFT JOIN tbl_jam g ON a.id_jam = g.id LEFT JOIN tbl_prodi h ON c.id_prodi = h.id LEFT JOIN tbl_kelas i ON JSON_UNQUOTE(JSON_EXTRACT(b.kelas,'$[0][0]')) = i.id WHERE a.id = '$id' order by e.id asc,Jam_Kuliah asc")->result_array();
+        $res = $this->db->query("SELECT a.id as id, a.id_hari as id_hari, a.id_jam as id_jam, b.id_dosen as id_dosen, e.nama as hari, Concat_WS('-', MID(g.range_jam,1,5), (SELECT MID(range_jam,7,5) FROM tbl_jam WHERE id = (SELECT jm.id FROM tbl_jam jm WHERE MID(jm.range_jam,1,5) = MID(g.range_jam,1,5)) + (c.sks - 1))) as jam_kuliah, c.nama as nama_mk, c.sks as sks, c.semester as semester, a.kelas as kelas, concat(d.nama,', ',d.title) as dosen, f.nama as ruang, h.nama as programstudi, i.tahun_angkatan as tahun_angkatan, e.kelas as jenis FROM tbl_jadwalkuliah a LEFT JOIN tbl_pengampu b ON a.id_pengampu = b.id LEFT JOIN tbl_lapangan c ON b.id_mk = c.id LEFT JOIN tbl_dosen d ON b.id_dosen = d.id LEFT JOIN tbl_hari e ON a.id_hari = e.id LEFT JOIN tbl_ruang f ON a.id_ruang = f.id LEFT JOIN tbl_jam g ON a.id_jam = g.id LEFT JOIN tbl_prodi h ON c.id_prodi = h.id LEFT JOIN tbl_kelas i ON JSON_UNQUOTE(JSON_EXTRACT(b.kelas,'$[0][0]')) = i.id WHERE a.id = '$id' order by e.id asc,Jam_Kuliah asc")->result_array();
 
         return $res;
     }
 
     function ambilDataGenerateJadwal($jenis_semester,$tahun_akademik){
-        $res = $this->db->query("SELECT a.id, b.sks, a.id_dosen, b.id_prodi, a.kelas FROM tbl_pengampu AS a LEFT JOIN tbl_matakuliah AS b ON a.id_mk = b.id WHERE b.semester % 2 = '$jenis_semester' AND a.tahun_akademik = '$tahun_akademik'");
+        $res = $this->db->query("SELECT a.id, b.sks, a.id_dosen, b.id_prodi, a.kelas FROM tbl_pengampu AS a LEFT JOIN tbl_lapangan AS b ON a.id_mk = b.id WHERE b.semester % 2 = '$jenis_semester' AND a.tahun_akademik = '$tahun_akademik'");
         return $res;
     }
 
     function ambilJenisGenerateJadwal($jenis_semester,$tahun_akademik,$jurusan){
-        $res = $this->db->query("SELECT CASE WHEN COUNT(b.jenis) > 0 THEN b.jenis END as jenis FROM tbl_pengampu AS a LEFT JOIN tbl_matakuliah AS b ON a.id_mk = b.id WHERE b.semester % 2 = '$jenis_semester' AND a.tahun_akademik = '$tahun_akademik' AND b.id_prodi = '$jurusan' GROUP by b.jenis");
+        $res = $this->db->query("SELECT CASE WHEN COUNT(b.jenis) > 0 THEN b.jenis END as jenis FROM tbl_pengampu AS a LEFT JOIN tbl_lapangan AS b ON a.id_mk = b.id WHERE b.semester % 2 = '$jenis_semester' AND a.tahun_akademik = '$tahun_akademik' AND b.id_prodi = '$jurusan' GROUP by b.jenis");
         return $res->result_array();
     }
 
     function ambilTotalGenerateJadwal($jenis_semester,$jurusan){
-        $res = $this->db->query("SELECT SUM(JSON_LENGTH(a.kelas)) as total FROM tbl_pengampu a LEFT JOIN tbl_matakuliah b ON a.id_mk = b.id WHERE b.semester % 2 = '$jenis_semester' AND b.id_prodi = '$jurusan'");
+        $res = $this->db->query("SELECT SUM(JSON_LENGTH(a.kelas)) as total FROM tbl_pengampu a LEFT JOIN tbl_lapangan b ON a.id_mk = b.id WHERE b.semester % 2 = '$jenis_semester' AND b.id_prodi = '$jurusan'");
         return $res->result_array();
     }
 

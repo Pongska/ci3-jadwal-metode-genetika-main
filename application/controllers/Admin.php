@@ -23,7 +23,7 @@ class Admin extends CI_Controller
 	public function index(){
 		$this->cekLogin();
 		$data['totaldosen'] = $this->Admin_models->ambilTotalData('tbl_dosen');
-		$data['totalmk'] = $this->Admin_models->ambilTotalData('tbl_matakuliah');
+		$data['totalmk'] = $this->Admin_models->ambilTotalData('tbl_lapangan');
 		$data['totalruang'] = $this->Admin_models->ambilTotalData('tbl_ruang');
 		$data['totalprodi'] = $this->Admin_models->ambilTotalData('tbl_prodi');
 		$this->load->view('admin/index',$data);
@@ -109,7 +109,7 @@ class Admin extends CI_Controller
 
 	public function matakuliah(){
 		$this->cekLogin();
-		$data['data'] = $this->Admin_models->query('SELECT *, (SELECT nama FROM tbl_prodi WHERE id = id_prodi) as programstudi FROM tbl_matakuliah ORDER BY semester, programstudi');
+		$data['data'] = $this->Admin_models->query('SELECT *, (SELECT nama FROM tbl_prodi WHERE id = id_prodi) as programstudi FROM tbl_lapangan ORDER BY semester, programstudi');
 		$data['dataProdi'] = $this->Admin_models->ambilData('tbl_prodi');
 		$this->load->view('admin/matakuliah',$data);
 	}
@@ -149,14 +149,14 @@ class Admin extends CI_Controller
 			if ($this->input->post('manajemen') == 'getKelas') {
 				$id_mk = $this->input->post('data');
 
-				$data_kelas = $this->Admin_models->query("SELECT *,(SELECT semester FROM tbl_matakuliah WHERE id = '$id_mk') as semester FROM tbl_kelas WHERE tahun_angkatan = (SELECT floor(year(current_timestamp) - ((SELECT semester FROM tbl_matakuliah WHERE id = '$id_mk')/2))) AND id_prodi = (SELECT id_prodi FROM tbl_matakuliah WHERE id = '$id_mk') ORDER BY jenis DESC");
+				$data_kelas = $this->Admin_models->query("SELECT *,(SELECT semester FROM tbl_lapangan WHERE id = '$id_mk') as semester FROM tbl_kelas WHERE tahun_angkatan = (SELECT floor(year(current_timestamp) - ((SELECT semester FROM tbl_lapangan WHERE id = '$id_mk')/2))) AND id_prodi = (SELECT id_prodi FROM tbl_lapangan WHERE id = '$id_mk') ORDER BY jenis DESC");
 
 				echo json_encode($data_kelas);
 			}
 		}else{
 			$this->cekLogin();
-			$data['data'] = $this->Admin_models->query("SELECT *, (SELECT nama FROM tbl_matakuliah WHERE id = id_mk) as matakuliah, (SELECT concat(nama,', ',title) FROM tbl_dosen WHERE id = id_dosen) as dosen FROM tbl_pengampu");
-			$data['data_mk'] = $this->Admin_models->query("SELECT *, (SELECT nama FROM tbl_prodi WHERE id = id_prodi) as programstudi FROM tbl_matakuliah ORDER BY id_prodi, semester");
+			$data['data'] = $this->Admin_models->query("SELECT *, (SELECT nama FROM tbl_lapangan WHERE id = id_mk) as matakuliah, (SELECT concat(nama,', ',title) FROM tbl_dosen WHERE id = id_dosen) as dosen FROM tbl_pengampu");
+			$data['data_mk'] = $this->Admin_models->query("SELECT *, (SELECT nama FROM tbl_prodi WHERE id = id_prodi) as programstudi FROM tbl_lapangan ORDER BY id_prodi, semester");
 			$data['data_dosen'] = $this->Admin_models->query('SELECT * FROM tbl_dosen ORDER BY nama');
 			$this->load->view('admin/pengampu',$data);
 		}
@@ -168,7 +168,7 @@ class Admin extends CI_Controller
 				$tbl = $this->input->post('tabel');
 
 				if ($tbl == 'matakuliah') {
-					$data = $this->Admin_models->query('SELECT *, (SELECT nama FROM tbl_prodi WHERE id = id_prodi) as programstudi FROM tbl_matakuliah ORDER BY id_prodi, semester');
+					$data = $this->Admin_models->query('SELECT *, (SELECT nama FROM tbl_prodi WHERE id = id_prodi) as programstudi FROM tbl_lapangan ORDER BY id_prodi, semester');
 				}else
 				if ($tbl == 'kelas') {
 					$data = $this->Admin_models->query('SELECT *, (SELECT nama FROM tbl_prodi WHERE id = id_prodi) as programstudi FROM tbl_kelas ORDER BY id_prodi ASC, tahun_angkatan ASC, jenis DESC');
@@ -243,7 +243,7 @@ class Admin extends CI_Controller
 
 					if($fitnessAfterMutation[$j] == 1){								
 						$this->db->query("TRUNCATE TABLE tbl_jadwalkuliah");
-						// $this->db->query("DELETE a FROM tbl_jadwalkuliah a LEFT JOIN tbl_pengampu b on a.id_pengampu = b.id LEFT JOIN tbl_matakuliah c on b.id_mk = c.id LEFT JOIN tbl_prodi d on c.id_prodi = d.id WHERE d.id = '$jurusan'");
+						// $this->db->query("DELETE a FROM tbl_jadwalkuliah a LEFT JOIN tbl_pengampu b on a.id_pengampu = b.id LEFT JOIN tbl_lapangan c on b.id_mk = c.id LEFT JOIN tbl_prodi d on c.id_prodi = d.id WHERE d.id = '$jurusan'");
 						
 						$jadwal_kuliah = array(array());
 						$jadwal_kuliah = $genetik->GetIndividu($j);
@@ -286,7 +286,7 @@ class Admin extends CI_Controller
 	}
 
 	function cekBentrokJadwal(){
-		$data_dosen = $this->Admin_models->query("SELECT a.id, a.id_jam, a.id_hari, a.id_ruang, b.id_dosen, c.sks FROM tbl_jadwalkuliah a LEFT JOIN tbl_pengampu b on a.id_pengampu = b.id LEFT JOIN tbl_matakuliah c on b.id_mk = c.id LEFT JOIN tbl_hari d on a.id_hari = d.id GROUP BY a.id_jam, a.id_hari, b.id_dosen ORDER BY d.id, a.id_jam");
+		$data_dosen = $this->Admin_models->query("SELECT a.id, a.id_jam, a.id_hari, a.id_ruang, b.id_dosen, c.sks FROM tbl_jadwalkuliah a LEFT JOIN tbl_pengampu b on a.id_pengampu = b.id LEFT JOIN tbl_lapangan c on b.id_mk = c.id LEFT JOIN tbl_hari d on a.id_hari = d.id GROUP BY a.id_jam, a.id_hari, b.id_dosen ORDER BY d.id, a.id_jam");
 		$data_bentrok = array();
 		
 		foreach ($data_dosen as $key => $value) {

@@ -240,7 +240,7 @@
                     type: "POST",
                     url: "<?php echo base_url() ?>"+"admin/manajemen",
                     dataType: 'JSON',
-                    data: {manajemen:'tambah',form:'matakuliah',data:data},
+                    data: {manajemen:'tambah',form:'lapangan',data:data},
                     success: function(res) {
                             if(res){
                                 Swal.fire(
@@ -271,7 +271,7 @@
                     type: "POST",
                     url: "<?php echo base_url() ?>"+"admin/manajemen",
                     dataType: 'JSON',
-                    data: {manajemen:'update',form:'matakuliah',id:id,data:data},
+                    data: {manajemen:'update',form:'lapangan',id:id,data:data},
                     success: function(res) {
                             if(res){
                                 Swal.fire(
@@ -345,7 +345,7 @@
                             type: "POST",
                             url: "<?php echo base_url() ?>"+"admin/manajemen",
                             dataType: "JSON",
-                            data: {manajemen:"hapus",form:'matakuliah',id:row.id},
+                            data: {manajemen:"hapus",form:'lapangan',id:row.id},
                             success: function(res){
                                 if (res === true) {
                                     Swal.fire(

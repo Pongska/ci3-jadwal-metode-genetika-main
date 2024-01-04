@@ -18,7 +18,7 @@ class CekBentrok extends CI_Controller
 		$penalty = 0;
 		
 		// do{
-			$data_ruang = $this->Admin_models->query("SELECT a.id, a.id_jam, a.id_hari, a.id_ruang, c.sks, a.kelas, c.nama FROM tbl_jadwalkuliah a LEFT JOIN tbl_pengampu b on a.id_pengampu = b.id LEFT JOIN tbl_matakuliah c on b.id_mk = c.id LEFT JOIN tbl_hari d on a.id_hari = d.id GROUP BY a.id_jam, a.id_hari, a.id_ruang ORDER BY d.id, a.id_jam");
+			$data_ruang = $this->Admin_models->query("SELECT a.id, a.id_jam, a.id_hari, a.id_ruang, c.sks, a.kelas, c.nama FROM tbl_jadwalkuliah a LEFT JOIN tbl_pengampu b on a.id_pengampu = b.id LEFT JOIN tbl_lapangan c on b.id_mk = c.id LEFT JOIN tbl_hari d on a.id_hari = d.id GROUP BY a.id_jam, a.id_hari, a.id_ruang ORDER BY d.id, a.id_jam");
 			$penalty = 0;
 			foreach ($data_ruang as $key => $value) {
 				$sks = $value['sks'];
@@ -52,7 +52,7 @@ class CekBentrok extends CI_Controller
 
 		// while ($this->Admin_models->query("SELECT COUNT(*) as total FROM tbl_jadwalkuliah a LEFT JOIN tbl_pengampu b ON a.id_pengampu = b.id GROUP BY a.id_jam, a.id_hari, b.id_dosen ORDER BY total DESC LIMIT 1")[0]['total'] > 1) {
 		// do{
-			$data_dosen = $this->Admin_models->query("SELECT a.id, a.id_jam, a.id_hari, a.id_ruang, b.id_dosen, c.sks, a.kelas, c.nama, e.jenis FROM tbl_jadwalkuliah a LEFT JOIN tbl_pengampu b on a.id_pengampu = b.id LEFT JOIN tbl_matakuliah c on b.id_mk = c.id LEFT JOIN tbl_hari d on a.id_hari = d.id LEFT JOIN tbl_kelas e ON JSON_UNQUOTE(JSON_EXTRACT(b.kelas,'$[0][0]')) = e.id GROUP BY a.id_jam, a.id_hari, b.id_dosen ORDER BY d.id, a.id_jam");
+			$data_dosen = $this->Admin_models->query("SELECT a.id, a.id_jam, a.id_hari, a.id_ruang, b.id_dosen, c.sks, a.kelas, c.nama, e.jenis FROM tbl_jadwalkuliah a LEFT JOIN tbl_pengampu b on a.id_pengampu = b.id LEFT JOIN tbl_lapangan c on b.id_mk = c.id LEFT JOIN tbl_hari d on a.id_hari = d.id LEFT JOIN tbl_kelas e ON JSON_UNQUOTE(JSON_EXTRACT(b.kelas,'$[0][0]')) = e.id GROUP BY a.id_jam, a.id_hari, b.id_dosen ORDER BY d.id, a.id_jam");
 			$penalty = 0;
 			foreach ($data_dosen as $key => $value) {
 				$sks = $value['sks'];
@@ -136,7 +136,7 @@ class CekBentrok extends CI_Controller
             $excluded = array_merge($excluded, $range_dhuhur);
         }
 
-        $jadwal_dosen = $this->Admin_models->query("SELECT a.id_jam, c.sks FROM tbl_jadwalkuliah a LEFT JOIN tbl_pengampu b ON a.id_pengampu = b.id LEFT JOIN tbl_matakuliah c ON b.id_mk = c.id WHERE a.id_hari = '$hari' AND b.id_dosen = '$dosen' AND a.id <> '$id' ORDER BY a.id_jam ASC");
+        $jadwal_dosen = $this->Admin_models->query("SELECT a.id_jam, c.sks FROM tbl_jadwalkuliah a LEFT JOIN tbl_pengampu b ON a.id_pengampu = b.id LEFT JOIN tbl_lapangan c ON b.id_mk = c.id WHERE a.id_hari = '$hari' AND b.id_dosen = '$dosen' AND a.id <> '$id' ORDER BY a.id_jam ASC");
 
 		foreach ($jadwal_dosen as $k => $val) {
 			for ($i=0; $i < $val['sks']; $i++) { 
@@ -144,7 +144,7 @@ class CekBentrok extends CI_Controller
 			}
 		}
 
-		$data_ruang = $this->Admin_models->query("SELECT a.id_jam, c.sks FROM tbl_jadwalkuliah a LEFT JOIN tbl_pengampu b ON a.id_pengampu = b.id LEFT JOIN tbl_matakuliah c ON b.id_mk = c.id WHERE id_hari = '$hari' AND id_ruang = '$ruang'");
+		$data_ruang = $this->Admin_models->query("SELECT a.id_jam, c.sks FROM tbl_jadwalkuliah a LEFT JOIN tbl_pengampu b ON a.id_pengampu = b.id LEFT JOIN tbl_lapangan c ON b.id_mk = c.id WHERE id_hari = '$hari' AND id_ruang = '$ruang'");
 
 		foreach ($data_ruang as $k => $val) {
 			for ($i=0; $i < $val['sks']; $i++) { 

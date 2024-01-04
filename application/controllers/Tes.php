@@ -70,7 +70,7 @@ class Tes extends CI_Controller
 
                     if($fitnessAfterMutation[$j] == 1){                             
                         $this->db->query("TRUNCATE TABLE tbl_jadwalkuliah");
-                        // $this->db->query("DELETE a FROM tbl_jadwalkuliah a LEFT JOIN tbl_pengampu b on a.id_pengampu = b.id LEFT JOIN tbl_matakuliah c on b.id_mk = c.id LEFT JOIN tbl_prodi d on c.id_prodi = d.id WHERE d.id = '$jurusan'");
+                        // $this->db->query("DELETE a FROM tbl_jadwalkuliah a LEFT JOIN tbl_pengampu b on a.id_pengampu = b.id LEFT JOIN tbl_lapangan c on b.id_mk = c.id LEFT JOIN tbl_prodi d on c.id_prodi = d.id WHERE d.id = '$jurusan'");
                         
                         $jadwal_kuliah = array(array());
                         $jadwal_kuliah = $genetik->GetIndividu($j);
@@ -91,7 +91,7 @@ class Tes extends CI_Controller
                     
                         // $dataJadwal = $this->Admin_models->ambilDataJadwal();
 
-                        // $cek = $this->db->query("SELECT d.id FROM tbl_jadwalkuliah a LEFT JOIN tbl_pengampu b on a.id_pengampu = b.id LEFT JOIN tbl_matakuliah c on b.id_mk = c.id LEFT JOIN tbl_prodi d on c.id_prodi = d.id GROUP BY d.id, c.jenis")->num_rows();
+                        // $cek = $this->db->query("SELECT d.id FROM tbl_jadwalkuliah a LEFT JOIN tbl_pengampu b on a.id_pengampu = b.id LEFT JOIN tbl_lapangan c on b.id_mk = c.id LEFT JOIN tbl_prodi d on c.id_prodi = d.id GROUP BY d.id, c.jenis")->num_rows();
 
                         // echo json_encode(array('status'=>true,$cek,$dataJadwal));
 

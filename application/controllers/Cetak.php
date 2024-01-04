@@ -18,7 +18,7 @@ class Cetak extends CI_Controller
 		$field = $this->input->get('field');
 		$filter = $this->input->get('filter');
 
-		$dataJadwal = $this->Admin_models->query("SELECT b.tahun_akademik, c.semester FROM tbl_jadwalkuliah a LEFT JOIN tbl_pengampu b on a.id_pengampu = b.id LEFT JOIN tbl_matakuliah c ON b.id_mk = c.id LIMIT 1");
+		$dataJadwal = $this->Admin_models->query("SELECT b.tahun_akademik, c.semester FROM tbl_jadwalkuliah a LEFT JOIN tbl_pengampu b on a.id_pengampu = b.id LEFT JOIN tbl_lapangan c ON b.id_mk = c.id LIMIT 1");
 		foreach ($dataJadwal as $key => $value) {
 			if ($value['semester'] % 2 == 0) {
 				$semester = "GENAP";

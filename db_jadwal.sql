@@ -377,10 +377,10 @@ INSERT INTO `tbl_kelas` (`id`, `nama`, `jenis`, `tahun_angkatan`, `id_prodi`) VA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_matakuliah`
+-- Table structure for table `tbl_lapangan`
 --
 
-CREATE TABLE `tbl_matakuliah` (
+CREATE TABLE `tbl_lapangan` (
   `id` int(5) NOT NULL,
   `kode_mk` varchar(10) DEFAULT NULL,
   `nama` varchar(100) NOT NULL,
@@ -391,10 +391,10 @@ CREATE TABLE `tbl_matakuliah` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_matakuliah`
+-- Dumping data for table `tbl_lapangan`
 --
 
-INSERT INTO `tbl_matakuliah` (`id`, `kode_mk`, `nama`, `sks`, `semester`, `jenis`, `id_prodi`) VALUES
+INSERT INTO `tbl_lapangan` (`id`, `kode_mk`, `nama`, `sks`, `semester`, `jenis`, `id_prodi`) VALUES
 (1, 'MKK 1805', 'Dasar Komputer dan Pemrograman', 3, 1, 'TEORI', 2),
 (2, 'MKK 1826', 'Jaringan Komputer', 3, 5, 'TEORI', 2),
 (3, 'MKK 2819', 'Komputasi Numerik', 3, 5, 'TEORI', 1),
@@ -910,9 +910,9 @@ ALTER TABLE `tbl_kelas`
   ADD KEY `id_prodi` (`id_prodi`);
 
 --
--- Indexes for table `tbl_matakuliah`
+-- Indexes for table `tbl_lapangan`
 --
-ALTER TABLE `tbl_matakuliah`
+ALTER TABLE `tbl_lapangan`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `kode_mk` (`kode_mk`),
   ADD KEY `id_prodi` (`id_prodi`),
@@ -976,9 +976,9 @@ ALTER TABLE `tbl_kelas`
   MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
--- AUTO_INCREMENT for table `tbl_matakuliah`
+-- AUTO_INCREMENT for table `tbl_lapangan`
 --
-ALTER TABLE `tbl_matakuliah`
+ALTER TABLE `tbl_lapangan`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=259;
 
 --
@@ -1013,17 +1013,17 @@ ALTER TABLE `tbl_jadwalkuliah`
   ADD CONSTRAINT `tbl_jadwalkuliah_ibfk_4` FOREIGN KEY (`id_ruang`) REFERENCES `tbl_ruang` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `tbl_matakuliah`
+-- Constraints for table `tbl_lapangan`
 --
-ALTER TABLE `tbl_matakuliah`
-  ADD CONSTRAINT `tbl_matakuliah_ibfk_1` FOREIGN KEY (`id_prodi`) REFERENCES `tbl_prodi` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `tbl_lapangan`
+  ADD CONSTRAINT `tbl_lapangan_ibfk_1` FOREIGN KEY (`id_prodi`) REFERENCES `tbl_prodi` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tbl_pengampu`
 --
 ALTER TABLE `tbl_pengampu`
   ADD CONSTRAINT `tbl_pengampu_ibfk_1` FOREIGN KEY (`id_dosen`) REFERENCES `tbl_dosen` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `tbl_pengampu_ibfk_2` FOREIGN KEY (`id_mk`) REFERENCES `tbl_matakuliah` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tbl_pengampu_ibfk_2` FOREIGN KEY (`id_mk`) REFERENCES `tbl_lapangan` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
