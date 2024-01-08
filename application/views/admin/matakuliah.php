@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <link href="<?php echo base_url('assets/img/logo/logo.png'); ?>" rel="icon">
-  <title>Jadwal Kuliah Fakultas Teknik</title>
+  <title>Jadwal Lapangan Balai Rakyat</title>
   <link href="<?php echo base_url('assets/vendor/fontawesome-free/css/all.min.css');  ?>" rel="stylesheet" type="text/css">
   <link href="<?php echo base_url('assets/vendor/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet" type="text/css">
   <link href="<?php echo base_url('assets/css/ruang-admin.min.css'); ?>" rel="stylesheet">
@@ -25,7 +25,7 @@
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="./">Home</a></li>
               <li class="breadcrumb-item" aria-current="page">Master Data</li>
-              <li class="breadcrumb-item active" aria-current="page">Matakuliah</li>
+              <li class="breadcrumb-item active" aria-current="page">Lapangan</li>
             </ol>
           </div>
 
@@ -33,7 +33,7 @@
             <div class="col-lg-12">
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">TABEL DATA MATAKULIAH</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">TABEL DATA LAPANGAN</h6>
                 </div>
                 <div class="card-body">
                 <div class="table-responsive p-3">
@@ -50,10 +50,9 @@
                         <th data-field="no" data-formatter="indexFormatter" class="font-14 text-center">#</th>
                         <th data-field="id" data-visible="false">id</th>
                         <th data-field="id_prodi" data-visible="false">id_prodi</th>
-                        <th data-field="kode_mk" class="font-14 text-center">Kode MK</th>
+                        <th data-field="kode_mk" class="font-14 text-center">Kode Booking</th>
                         <th data-field="nama" class="font-14">Nama</th>
-                        <th data-field="sks" class="font-14 text-center">SKS</th>
-                        <th data-field="semester" class="font-14 text-center">Semester</th>
+                        <th data-field="semester" class="font-14 text-center">Lapangan</th>
                         <!-- <th data-field="jenis" class="font-14">Jenis</th> -->
                         <th data-field="prodi" class="font-14">Program Studi</th>
                         <th data-field="aksi" data-formatter="aksiFormatter" data-events="window.aksiEvents" class="font-14 text-center">Aksi</th>
@@ -88,7 +87,7 @@
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="myModalLabel">Form Tambah Matakuliah</h5>
+                  <h5 class="modal-title" id="myModalLabel">Form Tambah Lapangan</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -98,27 +97,22 @@
                     <input type="hidden" name="id">
                     <input type="hidden" id="defaultKodeMK">
                     <div class="form-group row">
-                      <label for="inputKdMK" class="col-sm-3 col-form-label">Kode MK</label>
+                      <label for="inputKdMK" class="col-sm-3 col-form-label">Kode Booking</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputKdMK" name="kode_mk" placeholder="Kode MK" data-bv-notempty="true" data-bv-notempty-message="Kode MK tidak boleh kosong" onkeyup="this.value = this.value.toUpperCase();">
+                        <input type="text" class="form-control" id="inputKdMK" name="kode_mk" placeholder="Kode Lapangan" data-bv-notempty="true" data-bv-notempty-message="Kode MK tidak boleh kosong" onkeyup="this.value = this.value.toUpperCase();">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="inputNama" class="col-sm-3 col-form-label">Nama</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputNama" name="nama" placeholder="Nama Matakuliah" data-bv-notempty="true" data-bv-notempty-message="Nama Matakuliah tidak boleh kosong">
+                        <input type="text" class="form-control" id="inputNama" name="nama" placeholder="Nama " data-bv-notempty="true" data-bv-notempty-message="Nama Matakuliah tidak boleh kosong">
                       </div>
                     </div>
+                 
                     <div class="form-group row">
-                      <label for="inputSks" class="col-sm-3 col-form-label">SKS</label>
+                      <label for="inputSemester" class="col-sm-3 col-form-label">Lapangan</label>
                       <div class="col-sm-9">
-                        <input type="number" class="form-control" id="inputSks" name="sks" placeholder="SKS" data-bv-notempty="true" data-bv-notempty-message="SKS tidak boleh kosong" maxlength="1">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="inputSemester" class="col-sm-3 col-form-label">Semester</label>
-                      <div class="col-sm-9">
-                        <input type="number" class="form-control" id="inputSemester" name="semester" placeholder="Semester" data-bv-notempty="true" data-bv-notempty-message="Semester tidak boleh kosong">
+                        <input type="number" class="form-control" id="inputSemester" name="semester" placeholder="Lapangan" data-bv-notempty="true" data-bv-notempty-message="Semester tidak boleh kosong">
                       </div>
                     </div>
                     <!-- <div class="form-group row">
@@ -220,7 +214,7 @@
             $('#formMatakuliah').trigger("reset");
 
             $('#tambahModal').modal();
-            $('#myModalLabel').html("Form Tambah Matakuliah");
+            $('#myModalLabel').html("Form Tambah Lapangan");
 
             $('#submitBtn').html('<span class="icon text-white-50"><i class="fas fa-save"></i></span><span class="text">Simpan</span>');
         }

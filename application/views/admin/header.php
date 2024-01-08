@@ -18,7 +18,7 @@
       <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url('admin/matakuliah'); ?>">
           <i class="fab fa-fw fa-wpforms"></i>
-          <span>Matakuliah</span>
+          <span>Lapangan</span>
         </a>
       </li>
       <li class="nav-item">
@@ -55,7 +55,7 @@
           <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
             <i class="fa fa-bars"></i>
           </button>
-          <div class="text-white"><b>Jadwal Kuliah FT UM-Pare</b></div>
+          <div class="text-white"><b>Jadwal Lapangan Balai Rakyat</b></div>
           <ul class="navbar-nav ml-auto">
             <div class="topbar-divider d-none d-sm-block"></div>
             <li class="nav-item dropdown no-arrow">

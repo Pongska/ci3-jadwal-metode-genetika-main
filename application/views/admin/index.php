@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <link href="<?php echo base_url('assets/img/logo/logo.png'); ?>" rel="icon">
-  <title>Jadwal Kuliah Fakultas Teknik</title>
+  <title>Penjadwalan Lapangan Bulu Tangkis Balai Rakyat</title>
   <link href="<?php echo base_url('assets/vendor/fontawesome-free/css/all.min.css');  ?>" rel="stylesheet" type="text/css">
   <link href="<?php echo base_url('assets/vendor/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet" type="text/css">
   <link href="<?php echo base_url('assets/css/ruang-admin.min.css'); ?>" rel="stylesheet">
@@ -26,75 +26,11 @@
           </div>
 
           <div class="row mb-3">
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-5">
-              <div class="card h-100">
-                <div class="card-body">
-                  <div class="row align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-uppercase mb-1">Total Dosen</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $totaldosen; ?></div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-users fa-2x text-primary"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Earnings (Annual) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-5">
-              <div class="card h-100">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-uppercase mb-1">Total Matakuliah</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $totalmk; ?></div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fab fa-wpforms fa-2x text-success"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- New User Card Example -->
-            <div class="col-xl-3 col-md-6 mb-5">
-              <div class="card h-100">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-uppercase mb-1">Total Ruangan</div>
-                      <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?= $totalruang; ?></div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-building fa-2x text-info"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Pending Requests Card Example -->
-            <div class="col-xl-3 col-md-6 mb-5">
-              <div class="card h-100">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-uppercase mb-1">Total Program Studi</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $totalprodi; ?></div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-graduation-cap fa-2x text-warning"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> 
-
+          
             <div class="col-xl-12 col-lg-7">
               <div class="card mb-4">
                 <div class="card-body text-center">
-                  <h1>SELAMAT DATANG DI SISTEM INFORMASI JADWAL KULIAH FAKULTAS TEKNIK UNIVERSITAS MUHAMMADIYAH PAREPARE</h1>
+                  <h1>SISTEM PENJADWALAN LAPANGAN BULU TANGKIS BALAI RAKYAT</h1>
                 </div>
               </div>
             </div>

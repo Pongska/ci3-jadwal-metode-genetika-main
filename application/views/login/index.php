@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Jadwal Kuliah FT UM-Parepare</title>
+	<title>Penjadwalan Lapangan Bulu Tangkis Balai Rakyat</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -32,7 +32,7 @@
 			<div class="wrap-login100 p-t-50 p-b-90">
 				<form id="formLogin" class="login100-form validate-form flex-sb flex-w">
 					<span class="login100-form-title p-b-51">
-						Aplikasi Jadwal Kuliah Fakultas Teknik<br>UM-Parepare
+					Penjadwalan Lapangan Bulu Tangkis <br>Balai Rakyat
 					</span>
 
 					

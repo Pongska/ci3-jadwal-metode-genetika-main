@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <link href="<?php echo base_url('assets/img/logo/logo.png'); ?>" rel="icon">
-  <title>Jadwal Kuliah Fakultas Teknik</title>
+  <title>Jadwal Lapangan Balai Rakyat</title>
   <link href="<?php echo base_url('assets/vendor/fontawesome-free/css/all.min.css');  ?>" rel="stylesheet" type="text/css">
   <link href="<?php echo base_url('assets/vendor/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet" type="text/css">
   <link href="<?php echo base_url('assets/css/ruang-admin.min.css'); ?>" rel="stylesheet">
@@ -52,7 +52,7 @@
                       <tr>
                         <th data-field="id" class="font-14 text-center">ID</th>
                         <th data-field="range_jam" class="font-14 text-center">Jam</th>
-                        <th data-field="waktu_sholat" data-formatter="waktuSholatFormatter" class="font-14 text-center">Waktu Sholat</th>
+                        <th data-field="waktu_sholat" data-formatter="waktuSholatFormatter" class="font-14 text-center">Waktu Break</th>
                         <th data-field="aksi" data-formatter="aksiFormatter" data-events="window.aksiEvents" class="text-center">Aksi</th>
                       </tr>
                     </thead>
@@ -104,9 +104,9 @@
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="totalWaktuSKS" class="col-sm-3 col-form-label">Total Waktu Per SKS</label>
+                      <label for="totalWaktuSKS" class="col-sm-3 col-form-label">Total Waktu Perjam</label>
                       <div class="col-sm-9">
-                        <input type="number" class="form-control" id="generateJamSKS" name="jamSKS" placeholder="Waktu Per SKS (menit)" data-bv-notempty="true" data-bv-notempty-message="Waktu Per SKS tidak boleh kosong">
+                        <input type="number" class="form-control" id="generateJamSKS" name="jamSKS" placeholder="Waktu Per jam (menit)" data-bv-notempty="true" data-bv-notempty-message="Waktu Per SKS tidak boleh kosong">
                       </div>
                     </div>
                   </form>

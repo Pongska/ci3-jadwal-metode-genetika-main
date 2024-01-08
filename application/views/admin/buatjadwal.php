@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <link href="<?php echo base_url('assets/img/logo/logo.png'); ?>" rel="icon">
-  <title>Jadwal Kuliah Fakultas Teknik</title>
+  <title>Jadwal Lapangan Balai Rakyat</title>
   <link href="<?php echo base_url('assets/vendor/fontawesome-free/css/all.min.css');  ?>" rel="stylesheet" type="text/css">
   <link href="<?php echo base_url('assets/vendor/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet" type="text/css">
   <link href="<?php echo base_url('assets/css/ruang-admin.min.css'); ?>" rel="stylesheet">
@@ -60,7 +60,7 @@
                     <div class="form-group row">
                       <div class="row col-sm-12">
                       <div class="col-sm-3">
-                        <select class="selectpicker form-control" data-style="btn-outline-secondary" id="inputJenisSemester" name="jenis_semester" data-bv-notempty="true" data-bv-notempty-message="Jenis Semester belum dipilih" title="- Pilih Jenis Semester -">
+                        <select class="selectpicker form-control" data-style="btn-outline-secondary" id="inputJenisSemester" name="jenis_semester" data-bv-notempty="true" data-bv-notempty-message="Jenis Lapangan belum dipilih" title="- Pilih Lapangan -">
                           <option value="0">GENAP</option>
                           <option value="1">GANJIL</option>
                         </select>
@@ -75,7 +75,7 @@
                     <div class="form-group row">
                       <div class="row col-sm-12">
                       <div class="col-sm-3">
-                        <select class="selectpicker form-control" data-style="btn-outline-secondary" id="inputTahunAkademik" name="tahun_akademik" data-bv-notempty="true" data-bv-notempty-message="Tahun Akademik belum dipilih" multiple data-max-options="1" title="- Pilih Tahun Akademik -">
+                        <select class="selectpicker form-control" data-style="btn-outline-secondary" id="inputTahunAkademik" name="tahun_akademik" data-bv-notempty="true" data-bv-notempty-message="Tahun Sewa belum dipilih" multiple data-max-options="1" title="- Pilih Tahun Sewa -">
                           <?php
                             foreach ($dataTahunAkademik as $key => $value) {
                               echo "<option>$value[tahun_akademik]</option>";
@@ -146,17 +146,12 @@
                   <table class="table align-items-center table-flush" id="table" data-url="<?php echo base_url('admin/getData?tabel=tbl_jadwalkuliah') ?>" data-toggle="table" data-pagination="true" data-page-size="20" data-page-list="[10, 25, 50, 100, ALL]" data-search="true" data-row-style="rowStyle">
                     <thead class="bg-primary text-white text-center">
                       <tr>
-                        <th data-field="no" data-formatter="indexFormatter" class="font-14 text-center">#</th>
+                        <th data-field="no" data-formatter="indexFormatter" class="font-14 text-center">No</th>
                         <th data-field="id" data-visible="false">id</th>
                         <th data-field="tahun_angkatan" data-visible="false">tahun angkatan</th>
                         <th data-field="hari" class="font-14">Hari</th>
                         <th data-field="jam_kuliah" class="font-14">Jam</th>
-                        <th data-field="nama_mk" class="font-14">Matakuliah</th>
-                        <th data-field="sks" class="font-14">SKS</th>
-                        <th data-field="semester" class="font-14">Semester</th>
-                        <th data-field="kelas" class="font-14">Kelas</th>
-                        <th data-field="dosen" class="font-14">Dosen</th>
-                        <th data-field="ruang" class="font-14">Ruangan</th>
+                        <th data-field="semester" class="font-14">Lapangan</th>
                         <th data-field="programstudi" data-visible="false" class="font-14">Program Studi</th>
                       </tr>
                     </thead>

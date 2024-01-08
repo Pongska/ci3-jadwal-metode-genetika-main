@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <link href="<?php echo base_url('assets/img/logo/logo.png'); ?>" rel="icon">
-  <title>Jadwal Kuliah Fakultas Teknik</title>
+  <title>Jadwal Lapangan Balai Rakyat</title>
   <link href="<?php echo base_url('assets/vendor/fontawesome-free/css/all.min.css');  ?>" rel="stylesheet" type="text/css">
   <link href="<?php echo base_url('assets/vendor/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet" type="text/css">
   <link href="<?php echo base_url('assets/css/ruang-admin.min.css'); ?>" rel="stylesheet">
@@ -49,9 +49,9 @@
                   <table class="table align-items-center table-flush" id="table" data-toggle="table" data-click-to-select="true"  data-pagination="true" data-search="true">
                     <thead class="bg-primary text-white text-center">
                       <tr>
-                        <th data-field="id" class="font-14 text-center">ID</th>
+                        <th data-field="id" class="font-14 text-center">No</th>
                         <th data-field="nama" class="font-14">Hari</th>
-                        <th data-field="kelas" class="font-14">Kelas</th>
+                        <th data-field="kelas" class="font-14">Jenis</th>
                         <th data-field="aksi" data-formatter="aksiFormatter" data-events="window.aksiEvents" class="text-center">Aksi</th>
                       </tr>
                     </thead>
@@ -89,9 +89,9 @@
                   <form id="formHari">
                     <input type="hidden" id="defaultID">
                     <div class="form-group row">
-                      <label for="inputId" class="col-sm-3 col-form-label">ID</label>
+                      <label for="inputId" class="col-sm-3 col-form-label">No</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputId" name="id" placeholder="ID" data-container="body" data-toggle="popover" title="Perhatikan ID yang anda input" data-placement="left" data-content="Urutan Hari ditentukan berdasarkan ID" maxlength="2" min="1">
+                        <input type="text" class="form-control" id="inputId" name="id" placeholder="No" data-container="body" data-toggle="popover" title="Perhatikan ID yang anda input" data-placement="left" data-content="Urutan Hari ditentukan berdasarkan ID" maxlength="2" min="1">
                       </div>
                     </div>
                     <div class="form-group row">
@@ -101,11 +101,11 @@
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="inputKelas" class="col-sm-3 col-form-label">Kelas</label>
+                      <label for="inputKelas" class="col-sm-3 col-form-label">Jenis</label>
                       <div class="col-sm-9">
                         <select class="selectpicker form-control" data-style="btn-outline-secondary" id="inputKelas" name="kelas" data-bv-notempty="true" data-bv-notempty-message="Kelas tidak boleh kosong" multiple>
-                          <option>REGULER</option>
-                          <option>NONREGULER</option>
+                          <option>MEMBER</option>
+                          <option>NONMEMBER</option>
                         </select>
                       </div>
                     </div>
